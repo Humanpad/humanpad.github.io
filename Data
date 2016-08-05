@@ -1,0 +1,162 @@
+Humanpad is a standard for uncrackable encryption, implemented by a human using only pen and paper techniques.
+
+This provides extreme security.  By reducing or severely limiting the number of electronic side-channel attacks, plus an uncrackable one-time-pad encryption, human
+messangers can be certain of the implementation is safe from electronic eavesdropping.  It is simple enough to be taught to children.  
+It can also be used as a method of distributing symmetric keys for electronic messages.
+
+There are two standards.  One using dice, one using coins.  Humanpad6 and humanpad8.  Humanpad8 is better for key-distribution and includes punctuation and capitalization. 
+messages.  Humanpad6 is simpler to use.
+
+Humanpad Keys:
+
+To generate a humanpad key, gather your entropy devices (Coins or dice).
+
+Humanpad6:
+
+Go to a private room with no cameras.  
+
+Roll dice.  Without moving the dice horizontally, move the dice vertically until they are in a line from left to right.
+Write down the dice values left-to-right.  Fill up the paper this way.  Do it until you are bored or you have too much paper.   Put your name at the top of each page.
+All the pages are your 'pad'
+Make a copy of your pad for your friend.
+Repeat steps 1-10 for each friend you wish to communicate with.  Each friend should have a seperate pad.  Label them.
+
+Give your pad to your friend.  Make sure that nobody ever can get ahold of it.  Each of you should store your copies in a seperate secret place.
+
+Encrypting a message:
+
+Write your message down using only the characters A-Z0-9, no spaces.  Seperate sentences with newlines.
+
+Convert each letter to two numbers using the table:
+
+  1 2 3 4 5 6
+1 A B C D E F
+2 G H I J K L
+3 M N O P Q R
+4 S T U V W X
+5 Y Z 0 1 2 3
+6 4 5 6 7 8 9
+
+Now, pick a page and offset from your pad that has not been used.  write down the page and offset <> in front of the sentence.  
+Move from left to right and transform the numbers using this table:  (clock arithmetic, (a+b mod 6) + 1)
+
+Encrypting:
+          plaintext
+         1 2 3 4 5 6
+       1 2 3 4 5 6 1
+       2 3 4 5 6 1 2
+pad    3 4 5 6 1 2 3
+       4 5 6 1 2 3 4
+       5 6 1 2 3 4 5 
+       6 1 2 3 4 5 6
+
+Every time you use a number from your pad, cross it off/black it out.  When a page is empty, burn it.
+
+Decrypting a message:
+
+The message gives you the pageid and the offset.  Start there.  Above the message, write each of the pad values above each of the ciphertext values.
+Cross off the pad values as you go.
+
+For each pair (pad and cipher) use this table to write a new number down.
+
+Decrypting:
+          ciphertext
+         1 2 3 4 5 6
+       1 6 5 4 3 2 1
+       2 1 6 5 4 3 2
+pad    3 2 1 6 5 4 3
+       4 3 2 1 6 5 4
+       5 4 3 2 1 6 5 
+       6 5 4 3 2 1 6
+       
+Then convert each pair of two values to letters:
+Convert each letter to two numbers using the table:
+
+  1 2 3 4 5 6
+1 A B C D E F
+2 G H I J K L
+3 M N O P Q R
+4 S T U V W X
+5 Y Z 0 1 2 3
+6 4 5 6 7 8 9
+
+
+Summary Tables: 
+
+Humanpad6
+
+Values to letters: 
+
+  1 2 3 4 5 6
+1 A B C D E F
+2 G H I J K L
+3 M N O P Q R
+4 S T U V W X
+5 Y Z 0 1 2 3
+6 4 5 6 7 8 9
+
+Encrypting:
+          plaintext
+         1 2 3 4 5 6
+       1 2 3 4 5 6 1
+       2 3 4 5 6 1 2
+pad    3 4 5 6 1 2 3
+       4 5 6 1 2 3 4
+       5 6 1 2 3 4 5 
+       6 1 2 3 4 5 6
+       
+Decrypting: WRONG
+          ciphertext
+         1 2 3 4 5 6
+       1 6 5 4 3 2 1
+       2 5 4 3 2 1 6
+pad    3 4 3 2 1 6 5
+       4 3 2 1 6 5 4
+       5 2 1 6 5 4 3 
+       6 1 6
+       
+Humanpad8
+
+Coins to values:
+
+     0 0 0 0 1 1 1 1
+     0 0 1 1 0 0 1 1
+     0 1 0 1 0 1 0 1
+     ---------------
+     1 2 3 4 5 6 7 8
+
+Values to letters:
+
+  1 2 3 4 5 6 7 8
+1 A B C D E F G H
+2 I J K L M N O P
+3 Q R S T U V W X
+4 Y Z _ . , & ? !
+5 a b c d e f g h
+6 i j k l m n o p
+7 q r s t u v w x
+8 y z : ; ( ) - +
+
+Encrypting:
+          plaintext
+         1 2 3 4 5 6 7 8
+       1 2 3 4 5 6 7 8 1
+       2 3 4 5 6 7 8 1 2
+pad    3 4 5 6 7 8 1 2 3
+       4 5 6 7 8 1 2 3 4
+       5 6 7 8 1 2 3 4 5
+       6 7 8 1 2 3 4 5 6
+       7 8 1 2 3 4 5 6 7
+       8 1 2 3 4 5 6 7 8
+       
+       Decrypting:
+          ciphertext
+         1 2 3 4 5 6 7 8
+       1 8 7 6 5 4 3 2 1
+       2 7 6 5 4 3 2 1 8
+pad    3 6 5 4 3 2 1 8 7
+       4 5 4 3 2 1 8 7 6 
+       5 4 3 2 1 8 7 6 5
+       6 3 2 1 8 7 6 5 4
+       7 2 1 8 7 6 5 4 3
+       8 1 8 7 6 5 4 3 2
