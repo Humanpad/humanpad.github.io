@@ -25,7 +25,7 @@ Give your pad to your friend.  Make sure that nobody ever can get ahold of it.  
 
 Encrypting a message:
 
-Write your message down using only the characters A-Z0-9, no spaces.  Seperate sentences with newlines.
+Write your message down using only the characters A-Z0-9, no spaces.  Do not use newlines (simply continue on the next line when you run out of space)
 
 Convert each letter to two numbers using the table:
 
